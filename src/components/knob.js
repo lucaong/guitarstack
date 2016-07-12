@@ -18,10 +18,10 @@ module.exports = React.createClass({
       <div className="knob-wrap">
         <div className="knob">
           <div className="knob-dial"
-            onWheel={this.turnKnob}
+            onWheel={ this.turnKnob }
             style={{ transform: "rotate(" + this.state.angle + "deg)" }} />
         </div>
-        {this.props.knob.label}
+        { this.props.knob.label }
       </div>
     );
   }

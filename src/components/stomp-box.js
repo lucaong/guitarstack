@@ -8,13 +8,6 @@ module.exports = React.createClass({
   htmlClass: function() {
     return this.props.effect.name.replace(/\W+/, '-').toLowerCase()
   },
-  activeClass: function() {
-    if (this.state.active) {
-      return "on";
-    } else {
-      return "off";
-    }
-  },
   toggleSwitch: function() {
     this.setState({ active: !this.state.active });
   },
@@ -22,10 +15,11 @@ module.exports = React.createClass({
     var effect = this.props.effect,
         knobs = this.props.effect.knobs.map(function(knob) {
           return <Knob knob={ knob } key={ effect.name + "." + knob.label } />;
-        });
+        }),
+        activeClass = this.state.active ? "on" : "off";
 
     return (
-      <div className={ ["stomp-box", this.activeClass(), this.htmlClass()].join(" ") }>
+      <div className={ ["stomp-box", activeClass, this.htmlClass()].join(" ") }>
         <div className="knobs">
           <div className="stomp-led"></div>
           { knobs }
