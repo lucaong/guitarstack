@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #333333;
+}
+
+.board {
+  margin: 0 auto;
+  max-width: 1040px;
+  overflow: hidden;
+  font-family: 'Questrial', sans-serif;
+}
+
+.stomp-box {
+  background: orange;
+  width: 240px;
+  height: 340px;
+  border-radius: 10px;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.3);
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  font-family: 'Questrial', sans-serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 3px 5px 2px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  margin: 10px;
+}
+
+.knobs {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.stomp-box .knobs {
+  height: 120px;
+  background: rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.knobs .knob-wrap {
+  width: 70px;
+  float: left;
+  overflow: hidden;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  font-weight: bold;
+}
+.knobs .knob {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.8);
+}
+.knobs .knob:before, .knobs .knob:after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: #000000;
+}
+.knobs .knob:before {
+  left: 0;
+}
+.knobs .knob:after {
+  right: 0;
+}
+
+.knob .knob-dial {
+  width: 60px;
+  height: 60px;
+  background: #333333;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.1);
+}
+.knob .knob-dial:before {
+  display: block;
+  margin: 0 auto;
+  height: 25px;
+  width: 2px;
+  margin-top: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  content: "";
+}
+
+.stomp-box .stomp-led {
+  width: 100%;
+  height: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 12px;
+}
+.stomp-box .stomp-led:before {
+  display: block;
+  content: "";
+  margin: 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cc0000;
+  box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2);
+}
+.stomp-box.on .stomp-led:before {
+  background: #FF0000;
+  box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 0, 0, 0.9);
+}
+
+.stomp-box .stomp-switch {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
+  font-weight: bold;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%,
+  rgba(255, 255, 255, 0) 5%);
+  padding: 10px;
+  padding-top: 20px;
+  position: relative;
+}
+.stomp-box .stomp-switch small {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  text-align: right;
+  padding-right: 20px;
+}
+.stomp-box .stomp-switch:after {
+  display: block;
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  margin: 0 auto;
+  height: 130px;
+  width: 218px;
+  border-radius: 10px;
+  background: #333333;
+  background-image: repeating-linear-gradient(135deg, #404040 0, #404040
+  20px, #333333 20px, #333333 40px);
+  border-bottom: 2px solid #000000;
+  border-right: 2px solid #000000;
+  content: "";
+}
+
+.stomp-box.glowing-sunshine {
+  background: orange;
+}
+.stomp-box.blues-punch {
+  background: steelblue;
+}
+.stomp-box.bouncing-bastard {
+  background: darkred;
+}
+.stomp-box.wave-squeezer {
+  background: darkgreen;
+}
+
+.amp {
+  background: #ff7700;
+  width: 500px;
+  height: 340px;
+  border-radius: 10px;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.3);
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  font-family: 'Questrial', sans-serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 3px 5px 2px 0px rgba(0, 0, 0, 0.2);
+  float: left;
+  margin: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.amp-plate {
+  height: 100px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  border: 2px solid #333333;
+}
+
+.amp .knobs {
+  height: 100px;
+  margin: 0 auto;
+  width: 378px;
+}
+
+.amp-speaker {
+  margin: 10px;
+  height: 205px;
+  border-radius: 10px;
+  border: 2px solid #333333;
+  box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.2),
+  inset -3px -3px 3px rgba(255, 255, 255, 0.2);
+  background: tan;
+  background-image: repeating-linear-gradient(135deg,
+  rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.2)
+  2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 3px),
+  repeating-linear-gradient(45deg,
+  rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.2)
+  2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 3px);
+}
+
+.amp-logo {
+  margin: 75px auto;
+  padding: 4px;
+  width: 190px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 5px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5),
+  0 -1px 0 rgba(255, 255, 255, 0.5),
+  1px 0 0 rgba(255, 255, 255, 0.5),
+  -1px 0 0 rgba(255, 255, 255, 0.5);
+}
+.amp-logo small {
+  display: block;
+  text-align: right;
+  font-size: 13px;
+}

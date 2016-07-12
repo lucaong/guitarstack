@@ -1,0 +1,32 @@
+{
+  "name": "guitarstack",
+  "version": "1.0.0",
+  "description": "A browser-based guitar effect stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t [ babelify --presets [ react ] ] src/app.js -o js/app.js",
+    "watch": "watchify -t [ babelify --presets [ react ] ] src/app.js -o js/app.js -v -d",
+    "serve": "./node_modules/browser-sync/bin/browser-sync.js start --server --files='js/*' --files='css/*' --files=index.html --https"
+  },
+  "keywords": [
+    "guitar",
+    "stack",
+    "effects",
+    "stompbox",
+    "web-audio"
+  ],
+  "author": "Luca Ongaro",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "browserify": "^13.0.1",
+    "watchify": "^3.7.0"
+  }
+}
