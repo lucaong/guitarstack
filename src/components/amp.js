@@ -6,9 +6,8 @@ module.exports = React.createClass({
     return this.props.model.name.replace(/\W+/, '-').toLowerCase()
   },
   render: function() {
-    var model = this.props.model,
-        knobs = this.props.model.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ model.name + "." + knob.label } />;
+    var knobs = this.props.model.knobs.map(function(knob) {
+          return <Knob knob={ knob } key={ knob.label } />;
         });
 
     return (

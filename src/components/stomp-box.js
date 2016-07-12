@@ -14,7 +14,7 @@ module.exports = React.createClass({
   render: function() {
     var effect = this.props.effect,
         knobs = this.props.effect.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ effect.name + "." + knob.label } />;
+          return <Knob knob={ knob } key={ knob.label } />;
         }),
         activeClass = this.state.active ? "on" : "off";
 
