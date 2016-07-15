@@ -5,12 +5,14 @@ var Board = require('./components/board');
 var Effects = require('./effects')
 var Amps = require('./amps')
 
+var ctx = new AudioContext();
+
 var gadgets = [
-  Effects["wave-squeezer"],
-  Effects["blues-punch"],
-  Effects["glowing-sunshine"],
-  Effects["bouncing-bastard"],
-  Amps["little-screamer"]
+  Effects["wave-squeezer"](ctx, {}),
+  Effects["blues-punch"](ctx, {}),
+  Effects["glowing-sunshine"](ctx, {}),
+  Effects["bouncing-bastard"](ctx, {}),
+  Amps["little-screamer"](ctx, {})
 ];
 
 ReactDOM.render(

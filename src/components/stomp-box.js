@@ -9,12 +9,14 @@ module.exports = React.createClass({
     return this.props.effect.name.replace(/\W+/, '-').toLowerCase()
   },
   toggleSwitch: function() {
-    this.setState({ active: !this.state.active });
+    this.setState({ active: !this.state.active }, function() {
+      this.props.effect.toggleSwitch(this.state.active)
+    }.bind(this));
   },
   render: function() {
     var effect = this.props.effect,
         knobs = this.props.effect.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ knob.label } />;
+          return <Knob knob={ knob } key={ knob.label } initialValue={ 5 } />;
         }),
         activeClass = this.state.active ? "on" : "off";
 

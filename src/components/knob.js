@@ -2,7 +2,8 @@ var React = require('react');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return { angle: 0 };
+    var angle = ((this.props.initialValue / 10) * (135 * 2)) - 135;
+    return { angle: angle || 0 };
   },
   turnKnob: function(event) {
     event.preventDefault();
@@ -10,7 +11,10 @@ module.exports = React.createClass({
 
     angle = angle + event.deltaY;
     if (Math.abs(angle) <= 135) {
-      this.setState({ angle: angle });
+      this.setState({ angle: angle }, function() {
+        var value = 10 * (angle + 135) / (135 * 2);
+        this.props.knob.set(value);
+      }.bind(this));
     }
   },
   render: function() {
