@@ -7,8 +7,8 @@ module.exports = React.createClass({
   },
   render: function() {
     var knobs = this.props.model.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ knob.label } initialValue={ 5 } />;
-        });
+          return <Knob knob={ knob } key={ knob.label } initialValue={ this.props.initialValues[knob.label] } />;
+        }.bind(this));
 
     return (
       <div className={ "amp " + this.htmlClass() }>

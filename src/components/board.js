@@ -6,11 +6,11 @@ module.exports = React.createClass({
   render: function() {
     var gadgets = this.props.gadgets.map(function(gadget) {
       if (gadget.type == 'Amp') {
-        return (<Amp model={ gadget } key={ gadget.name } />);
+        return (<Amp model={ gadget } key={ gadget.name } initialValues={ gadget.initialValues } />);
       } else {
-        return (<StompBox effect={ gadget } key={ gadget.name } />);
+        return (<StompBox effect={ gadget } key={ gadget.name } initialValues={ gadget.initialValues } />);
       }
-    });
+    }.bind(this));
 
     return (
       <div className="board">

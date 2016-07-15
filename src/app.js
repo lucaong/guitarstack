@@ -8,11 +8,11 @@ var Amps = require('./amps')
 var ctx = new AudioContext();
 
 var gadgets = [
-  Effects["wave-squeezer"](ctx, {}),
-  Effects["blues-punch"](ctx, {}),
-  Effects["glowing-sunshine"](ctx, {}),
-  Effects["bouncing-bastard"](ctx, {}),
-  Amps["little-screamer"](ctx, {})
+  new Effects["wave-squeezer"](ctx, { threshold: 3, attack: 2, level: 8 }),
+  new Effects["blues-punch"](ctx, { drive: 3, tone: 7, level: 5 }),
+  new Effects["glowing-sunshine"](ctx, { drive: 7, tone: 7, level: 5 }),
+  new Effects["bouncing-bastard"](ctx, { time: 2, feedback: 3, level: 5 }),
+  new Amps["little-screamer"](ctx, { volume: 8, bass: 7, mid: 4, treble: 5, reverb: 8 })
 ];
 
 ReactDOM.render(

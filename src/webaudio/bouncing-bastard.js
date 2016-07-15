@@ -1,7 +1,7 @@
 var base = require("./base-nodes");
 
 var BouncingBastard = function(ctx, options) {
-  options = Object.assign({}, options, BouncingBastard.defaults);
+  options = Object.assign({}, BouncingBastard.defaults, options);
 
   var level    = ctx.createGain();
   var delay    = ctx.createDelay();
@@ -10,6 +10,7 @@ var BouncingBastard = function(ctx, options) {
 
   node.name = "Bouncing Bastard";
   node.type = "Delay";
+  node.initialValues = options;
 
   level.connect(node.output);
   feedback.connect(delay);

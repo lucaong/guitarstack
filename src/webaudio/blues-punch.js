@@ -1,7 +1,7 @@
 var base = require("./base-nodes");
 
 var BluesPunch = function(ctx, options) {
-  options = Object.assign({}, options, BluesPunch.defaults);
+  options = Object.assign({}, BluesPunch.defaults, options);
 
   var node = new base.Distortion(ctx, options, function(x, level) {
     return (Math.PI + level * 15) * x * 57 * (Math.PI / 180) / (Math.PI + level * Math.abs(x));
@@ -9,6 +9,7 @@ var BluesPunch = function(ctx, options) {
 
   node.name = "Blues Punch";
   node.type = "Overdrive";
+  node.initialValues = options;
 
   return node;
 };

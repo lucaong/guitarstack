@@ -1,7 +1,7 @@
 var base = require("./base-nodes");
 
 var WaveSqueezer = function(ctx, options) {
-  options = Object.assign({}, options, WaveSqueezer.defaults);
+  options = Object.assign({}, WaveSqueezer.defaults, options);
 
   var level = ctx.createGain();
   var comp = ctx.createDynamicsCompressor();
@@ -9,6 +9,7 @@ var WaveSqueezer = function(ctx, options) {
 
   node.name = "Wave Squeezer"
   node.type = "Compressor"
+  node.initialValues = options;
 
   comp.ratio.value = 2;
   comp.knee.value = 5;

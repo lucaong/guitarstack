@@ -1,7 +1,7 @@
 var base = require("./base-nodes");
 
 var GlowingSunshine = function(ctx, options) {
-  options = Object.assign({}, options, GlowingSunshine.defaults);
+  options = Object.assign({}, GlowingSunshine.defaults, options);
 
   var node = new base.Distortion(ctx, options, function(x, level) {
     return Math.tanh(level * x * Math.PI) * Math.cos(0.5 * x)
@@ -9,6 +9,7 @@ var GlowingSunshine = function(ctx, options) {
 
   node.name = "Glowing Sunshine";
   node.type = "Distortion";
+  node.initialValues = options;
 
   return node;
 };

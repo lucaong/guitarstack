@@ -1,7 +1,7 @@
 var base = require("./base-nodes");
 
 var LittleScreamer = function(ctx, options) {
-  options = Object.assign({}, options, LittleScreamer.defaults);
+  options = Object.assign({}, LittleScreamer.defaults, options);
 
   var volume = ctx.createGain();
 
@@ -29,6 +29,7 @@ var LittleScreamer = function(ctx, options) {
 
   node.name = "Little Screamer";
   node.type = "Amp";
+  node.initialValues = options;
 
   node.knobs = [
     new base.Knob("volume", { min: 0, max: 5 }, options.volume, function(v) {
