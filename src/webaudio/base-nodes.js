@@ -52,8 +52,8 @@ var Knob = function(label, options, initial, fn) {
 
   var knob = {
     set: function(value) {
-      value = Math.min(Math.max(value, 0), 10);
-      var y = map(value);
+      this.value = Math.min(Math.max(value, 0), 10);
+      var y = map(this.value);
       fn(y);
     },
     label: label

@@ -1,7 +1,9 @@
 var React = require('react');
+var Draggable = require("./draggable");
 var Knob = require('./knob');
 
 module.exports = React.createClass({
+  mixins: [Draggable],
   htmlClass: function() {
     return this.props.model.name.replace(/\W+/, '-').toLowerCase()
   },
@@ -11,7 +13,8 @@ module.exports = React.createClass({
         }.bind(this));
 
     return (
-      <div className={ "amp " + this.htmlClass() }>
+      <div className={ "amp " + this.htmlClass() } draggable="true"
+           onDragStart={ this.dragStart } onDragOver={ this.dragOver } onDrop={ this.drop }>
         <div className="amp-plate">
           <div className="knobs">
             { knobs }

@@ -1,12 +1,16 @@
-var React = require('react');
-var Knob = require('./knob');
+var React = require("react");
+var Draggable = require("./draggable");
+var Knob = require("./knob");
 
 module.exports = React.createClass({
+  mixins: [Draggable],
   getInitialState: function() {
     return { active: true };
   },
   htmlClass: function() {
-    return this.props.effect.name.replace(/\W+/, '-').toLowerCase()
+    var nameClass = this.props.effect.name.replace(/\W+/, "-").toLowerCase();
+    var activeClass = this.state.active ? "on" : "off";
+    return ["stomp-box", activeClass, nameClass].join(" ");
   },
   toggleSwitch: function() {
     this.setState({ active: !this.state.active }, function() {
@@ -14,14 +18,14 @@ module.exports = React.createClass({
     }.bind(this));
   },
   render: function() {
-    var effect = this.props.effect,
-        knobs = this.props.effect.knobs.map(function(knob) {
+    var effect = this.props.effect;
+    var knobs = this.props.effect.knobs.map(function(knob) {
           return <Knob knob={ knob } key={ knob.label } initialValue={ this.props.initialValues[knob.label] } />;
-        }.bind(this)),
-        activeClass = this.state.active ? "on" : "off";
+        }.bind(this));
 
     return (
-      <div className={ ["stomp-box", activeClass, this.htmlClass()].join(" ") }>
+      <div draggable="true" className={ this.htmlClass() } onDragStart={ this.dragStart }
+           onDragOver={ this.dragOver }>
         <div className="knobs">
           <div className="stomp-led"></div>
           { knobs }

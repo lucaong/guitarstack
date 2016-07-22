@@ -4,6 +4,7 @@
 
 body {
   background: #333333;
+  font-family: 'Questrial', sans-serif;
 }
 
 .board {
@@ -11,6 +12,55 @@ body {
   max-width: 1040px;
   overflow: hidden;
   font-family: 'Questrial', sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  padding: 10px;
+}
+
+.header h1 {
+  width: 100px;
+  float: left;
+  margin: 0;
+  color: #000000;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: normal;
+  color: rgba(255, 100, 10, 0.7);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.header h1 b {
+  color: #555555;
+  font-weight: normal;
+}
+
+.controls {
+  text-align: right;
+  float: right;
+  width: 100px;
+}
+
+.controls button {
+  border-radius: 5px;
+  border: none;
+  font-family: 'Questrial', sans-serif;
+  font-size: 18px;
+  background: #444444;
+  color: rgba(255, 100, 10, 0.9);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  outline: none;
+  margin: 0 0 1px 0;
+}
+.controls button:disabled {
+  color: rgba(255, 100, 10, 0.4);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.controls button:active {
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+  margin: 1px 0 0 0;
 }
 
 .stomp-box {
