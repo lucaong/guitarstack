@@ -7,6 +7,9 @@ module.exports = React.createClass({
   getInitialState: function() {
     return { gadgets: this.props.gadgets };
   },
+  componentDidMount: function() {
+    this.rewireEffects();
+  },
   swapGadgets: function(idA, idB) {
     var gadgets = this.state.gadgets.slice(0);
     var idxB = gadgets.findIndex(function(gadget) { return gadget.id == idB });
@@ -18,6 +21,10 @@ module.exports = React.createClass({
       gadgets.splice(idxA, 0, b[0]);
     }
     this.setState({ gadgets: gadgets });
+  },
+  rewireEffects: function() {
+    var stack = [this.props.input].concat(this.state.gadgets, this.props.output);
+    stack.reduce(function(previous, next) { return previous.connect(next); });
   },
   serialize: function() {
     return this.state.gadgets.map(function(gadget) {
@@ -50,12 +57,14 @@ module.exports = React.createClass({
             if (gadget.type == 'Amp') {
               return (
                 <Amp model={ gadget } key={ gadget.id } id={ gadget.id }
-                initialValues={ gadget.initialValues } swapGadgets={ this.swapGadgets } />
+                initialValues={ gadget.initialValues } swapGadgets={ this.swapGadgets }
+                rewireEffects={ this.rewireEffects } />
               );
             } else {
               return (
                 <StompBox effect={ gadget } key={ gadget.id } id={ gadget.id }
-                initialValues={ gadget.initialValues } swapGadgets={ this.swapGadgets } />
+                initialValues={ gadget.initialValues } swapGadgets={ this.swapGadgets }
+                rewireEffects={ this.rewireEffects } />
               );
             }
           }.bind(this))

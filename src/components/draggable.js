@@ -8,5 +8,8 @@ module.exports = {
     if (draggedId != this.props.id) {
       this.props.swapGadgets(this.props.id, draggedId);
     }
+  },
+  drop: function(e) {
+    this.props.rewireEffects();
   }
 };

@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
     return (
       <div draggable="true" className={ this.htmlClass() } onDragStart={ this.dragStart }
-           onDragOver={ this.dragOver }>
+           onDragOver={ this.dragOver } onDrop={ this.drop }>
         <div className="knobs">
           <div className="stomp-led"></div>
           { knobs }
