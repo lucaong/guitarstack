@@ -6,6 +6,10 @@ var BaseNode = function(ctx, input, output) {
     connect: function(other) {
       this.output.connect(other.input);
       return other;
+    },
+    disconnect: function() {
+      this.output.disconnect();
+      return this;
     }
   };
   return node;

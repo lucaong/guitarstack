@@ -24,7 +24,9 @@ module.exports = React.createClass({
   },
   rewireEffects: function() {
     var stack = [this.props.input].concat(this.state.gadgets, this.props.output);
-    stack.reduce(function(previous, next) { return previous.connect(next); });
+    stack.reduce(function(previous, next) {
+      return previous.disconnect().connect(next);
+    });
   },
   serialize: function() {
     return this.state.gadgets.map(function(gadget) {
