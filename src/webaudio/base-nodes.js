@@ -94,7 +94,7 @@ var Distortion = function(ctx, options, curveFn) {
     new Knob("drive", { min: 0, max: 10 }, options.drive || 5, function(x) {
       distortion.curve = curve(x);
     }),
-    new Knob("tone", { min: 40, max: 40000 }, options.tone || 5, function(x) {
+    new Knob("tone", { min: 100, max: 22050 }, options.tone || 5, function(x) {
       lowPass.frequency.value = x;
     }),
     new Knob("level", { min: 0, max: 2 }, options.level || 5, function(x) {

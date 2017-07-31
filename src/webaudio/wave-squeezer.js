@@ -13,7 +13,7 @@ var WaveSqueezer = function(ctx, options) {
 
   comp.ratio.value = 2;
   comp.knee.value = 5;
-  comp.release.value = 2;
+  comp.release.value = 0.5;
 
   node.knobs = [
     new base.Knob("threshold", { min: -100, max: 0 }, options.threshold, function(x) {
