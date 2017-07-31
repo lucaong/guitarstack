@@ -4,7 +4,7 @@ var BluesPunch = function(ctx, options) {
   options = Object.assign({}, BluesPunch.defaults, options);
 
   var node = new base.Distortion(ctx, options, function(x, level) {
-    return (Math.PI + level * 15) * x * 57 * (Math.PI / 180) / (Math.PI + level * Math.abs(x));
+    return Math.tanh(0.5 * level * x * Math.PI)
   });
 
   node.name = "Blues Punch";
