@@ -69,7 +69,7 @@ var Knob = function(label, options, initial, fn) {
 
 var Distortion = function(ctx, options, curveFn) {
   var distortion = ctx.createWaveShaper();
-  distortion.oversample = '4x';
+  distortion.oversample = '2x';
 
   var lowPass = ctx.createBiquadFilter();
   lowPass.type = 'lowpass';
@@ -79,7 +79,7 @@ var Distortion = function(ctx, options, curveFn) {
   var node = new Node(ctx, [distortion, lowPass, level]);
 
   var curve = function(level) {
-    var n_samples = 2048,
+    var n_samples = 4096,
     curve = new Float32Array(n_samples),
     deg = Math.PI / 180,
     x;
