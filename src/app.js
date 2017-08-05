@@ -15,7 +15,16 @@ var defaultGadgetList = [
   { id: "5", name: "Little Screamer", settings: { volume: 8, bass: 7, mid: 4, treble: 5, reverb: 8 } }
 ];
 
-navigator.mediaDevices.getUserMedia({ audio: true })
+navigator.mediaDevices.getUserMedia({
+  audio: {
+    echoCancellation: false,
+    googEchoCancellation: false,
+    googAutoGainControl: false,
+    googNoiseSuppression: false,
+    googHighpassFilter: false,
+    latency: 10
+  }
+})
   .catch(function(error) { alert(error) })
   .then(function(mediaStream) {
     var ctx = new AudioContext();
