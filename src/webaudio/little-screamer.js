@@ -17,7 +17,7 @@ var LittleScreamer = function(ctx, options) {
   treble.type = 'highshelf';
   treble.frequency.value = 3000;
 
-  var conv   = new base.Convolver(ctx, '/impulses/little_screamer.wav');
+  var conv = new base.Convolver(ctx, '/impulses/little_screamer.wav');
 
   var reverbGain    = ctx.createGain()
   var reverbConv    = new base.Convolver(ctx, '/impulses/plate_reverb.wav');
