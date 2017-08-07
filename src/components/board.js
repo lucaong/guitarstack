@@ -36,7 +36,7 @@ module.exports = React.createClass({
         settings: gadget.knobs.reduce(function(s, knob) {
           s[knob.label] = knob.value;
           return s;
-        }, {})
+        }, { on: gadget.on })
       }
     });
   },

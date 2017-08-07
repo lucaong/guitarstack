@@ -8,10 +8,10 @@ var base = require("./webaudio/base-nodes");
 var adapter = require("webrtc-adapter");
 
 var defaultGadgetList = [
-  { id: "1", name: "Wave Squeezer", settings: { threshold: 3, attack: 2, level: 8 } },
-  { id: "2", name: "Blues Punch", settings: { drive: 3, tone: 7, level: 5 } },
-  { id: "3", name: "Glowing Sunshine", settings: { drive: 7, tone: 7, level: 5 } },
-  { id: "4", name: "Bouncing Bastard", settings: { time: 2, feedback: 3, level: 5 } },
+  { id: "1", name: "Wave Squeezer", settings: { threshold: 3, attack: 2, level: 8, on: true } },
+  { id: "2", name: "Blues Punch", settings: { drive: 3, tone: 7, level: 5, on: false } },
+  { id: "3", name: "Glowing Sunshine", settings: { drive: 7, tone: 7, level: 5, on: true } },
+  { id: "4", name: "Bouncing Bastard", settings: { time: 2, feedback: 3, level: 5, on: false } },
   { id: "5", name: "Little Screamer", settings: { volume: 8, bass: 7, mid: 4, treble: 5, reverb: 8 } }
 ];
 

@@ -15,7 +15,7 @@ var BaseNode = function(ctx, input, output) {
   return node;
 };
 
-var Node = function(ctx, effects) {
+var Node = function(ctx, effects, on) {
   var node = new BaseNode(ctx, ctx.createGain(), ctx.createGain());
 
   for(var i = 0; i < effects.length - 1; i++) {
@@ -30,9 +30,10 @@ var Node = function(ctx, effects) {
     } else {
       node.input.connect(node.output);
     }
+    node.on = on
   }
 
-  node.toggleSwitch(true);
+  node.toggleSwitch(on || false);
   return node;
 };
 
@@ -76,7 +77,7 @@ var Distortion = function(ctx, options, curveFn) {
 
   var level = ctx.createGain();
 
-  var node = new Node(ctx, [distortion, lowPass, level]);
+  var node = new Node(ctx, [distortion, lowPass, level], options.on);
 
   var curve = function(level) {
     var n_samples = 4096,

@@ -5,7 +5,7 @@ var Knob = require("./knob");
 module.exports = React.createClass({
   mixins: [Draggable],
   getInitialState: function() {
-    return { active: true };
+    return { active: this.props.initialValues["on"] || false };
   },
   htmlClass: function() {
     var nameClass = this.props.effect.name.replace(/\W+/, "-").toLowerCase();

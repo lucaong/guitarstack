@@ -5,7 +5,7 @@ var WaveSqueezer = function(ctx, options) {
 
   var level = ctx.createGain();
   var comp = ctx.createDynamicsCompressor();
-  var node = new base.Node(ctx, [comp, level]);
+  var node = new base.Node(ctx, [comp, level], options.on);
 
   node.name = "Wave Squeezer"
   node.type = "Compressor"

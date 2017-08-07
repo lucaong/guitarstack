@@ -25,14 +25,16 @@ var LittleScreamer = function(ctx, options) {
   var reverbOutGain = ctx.createGain()
   reverbGain.connect(reverbOutGain);
 
-  var node   = new base.Node(ctx, [conv, bass, mid, treble, volume, reverbGain, reverbConv, reverbLevel, reverbOutGain]);
+  var node = new base.Node(ctx,
+    [conv, bass, mid, treble, volume, reverbGain, reverbConv, reverbLevel, reverbOutGain],
+    true);
 
   node.name = "Little Screamer";
   node.type = "Amp";
   node.initialValues = options;
 
   node.knobs = [
-    new base.Knob("volume", { min: 0, max: 5 }, options.volume, function(v) {
+    new base.Knob("volume", { min: 0, max: 10 }, options.volume, function(v) {
       volume.gain.value = v;
     }),
     new base.Knob("bass", { min: -40, max: 10 }, options.bass, function(b) {

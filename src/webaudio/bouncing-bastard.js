@@ -6,7 +6,7 @@ var BouncingBastard = function(ctx, options) {
   var level    = ctx.createGain();
   var delay    = ctx.createDelay();
   var feedback = ctx.createGain();
-  var node     = new base.Node(ctx, [level, delay, feedback]);
+  var node     = new base.Node(ctx, [level, delay, feedback], options.on);
 
   node.name = "Bouncing Bastard";
   node.type = "Delay";
