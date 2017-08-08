@@ -160,12 +160,12 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #cc0000;
+  background: #aa0000;
   box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2);
 }
 .stomp-box.on .stomp-led:before {
   background: #FF0000;
-  box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 0, 0, 0.9);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 200, 200, 0.7);
 }
 
 .stomp-box .stomp-switch {
