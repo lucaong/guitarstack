@@ -2,7 +2,7 @@ var React = require('react');
 var Draggable = require("./draggable");
 var Knob = require('./knob');
 
-module.exports = React.createClass({
+module.exports = Amp = React.createClass({
   mixins: [Draggable],
   htmlClass: function() {
     return this.props.model.name.replace(/\W+/, '-').toLowerCase()

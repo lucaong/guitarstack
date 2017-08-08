@@ -4,7 +4,7 @@
   "description": "A browser-based guitar effect stack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/mocha/bin/mocha -R spec -r test/setup.js --recursive",
     "build": "./node_modules/browserify/bin/cmd.js -t [ babelify --presets [ react ] ] -g uglifyify src/app.js -o js/app.js",
     "watch": "./node_modules/watchify/bin/cmd.js -t [ babelify --presets [ react ] ] src/app.js -o js/app.js -v -d",
     "serve": "./node_modules/browser-sync/bin/browser-sync.js start --server --files='js/*' --files='css/*' --files=index.html --https"
@@ -26,8 +26,15 @@
     "webrtc-adapter": "^1.4.0"
   },
   "devDependencies": {
+    "babel-register": "^6.24.1",
     "browser-sync": "^2.13.0",
     "browserify": "^13.0.1",
+    "chai": "^4.1.1",
+    "enzyme": "^2.9.1",
+    "mocha": "^3.5.0",
+    "react-addons-test-utils": "^15.6.0",
+    "sinon": "^3.0.0",
+    "sinon-chai": "^2.12.0",
     "uglifyify": "^3.0.2",
     "watchify": "^3.7.0"
   }

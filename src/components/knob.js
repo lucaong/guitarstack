@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+module.exports = Knob = React.createClass({
   getInitialState: function() {
     var angle = ((this.props.initialValue / 10) * (135 * 2)) - 135;
     return { angle: angle || 0 };
