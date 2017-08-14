@@ -1,7 +1,6 @@
 var React = require('react');
 var StompBox = require('./stomp-box');
 var Amp = require('./amp');
-var Repo = require('../repo');
 
 module.exports = Board = React.createClass({
   getInitialState: function() {
@@ -46,8 +45,8 @@ module.exports = Board = React.createClass({
     });
   },
   save: function() {
-    Repo.store("preset-0:bank-0", this.serialize(), function(value) {
-      console.log("saved", JSON.stringify(value));
+    this.props.repo.store("preset-0:bank-0", this.serialize(), function(x) {
+      console.log("saved", JSON.stringify(x));
     });
   },
   render: function() {
@@ -56,7 +55,7 @@ module.exports = Board = React.createClass({
         <header className="header">
           <h1>GuitarStack<b>.io</b></h1>
           <div className="controls">
-            <button onClick={ this.save }>Save</button>
+            <button className="save" onClick={ this.save }>Save</button>
           </div>
         </header>
         {

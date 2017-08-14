@@ -39,7 +39,7 @@ navigator.mediaDevices.getUserMedia({
       });
 
       ReactDOM.render(
-        <Board gadgets={ gadgets } input={ input } output={ output } />,
+        <Board gadgets={ gadgets } input={ input } output={ output } repo={ Repo } />,
         document.getElementById('app')
       );
     });

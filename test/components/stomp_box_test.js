@@ -79,4 +79,16 @@ describe('StompBox', () => {
     expect(event.preventDefault).to.have.been.called
     expect(swapGadgets).to.have.been.calledWith('two', 'one')
   })
+
+  it('calls props.rewireEffects on drop', () => {
+    var rewireEffects = sinon.spy()
+    var box = shallow(<StompBox
+      effect={effect}
+      initialValues={initialValues}
+      rewireEffects={rewireEffects}
+      id="one" />)
+
+    box.simulate('drop')
+    expect(rewireEffects).to.have.been.called
+  })
 })

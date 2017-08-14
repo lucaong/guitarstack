@@ -58,4 +58,16 @@ describe('Amp', () => {
     expect(event.preventDefault).to.have.been.called
     expect(swapGadgets).to.have.been.calledWith('two', 'one')
   })
+
+  it('calls props.rewireEffects on drop', () => {
+    var rewireEffects = sinon.spy()
+    var amp = shallow(<Amp
+      model={model}
+      initialValues={initialValues}
+      rewireEffects={rewireEffects}
+      id="one" />)
+
+    amp.simulate('drop')
+    expect(rewireEffects).to.have.been.called
+  })
 })
