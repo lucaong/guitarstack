@@ -4,7 +4,8 @@ const GlowingSunshine = function(ctx, options) {
   options = Object.assign({}, GlowingSunshine.defaults, options)
 
   const node = new base.Distortion(ctx, options, (x, level) => {
-    return Math.tanh(level * x * Math.PI) * Math.cos(0.5 * x)
+    const y = Math.tanh(Math.PI * x * level * 0.5)
+    return Math.tanh(Math.PI * y * level * 0.5) * Math.cos(0.5 * y)
   })
 
   node.name = "Glowing Sunshine"
