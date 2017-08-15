@@ -152,7 +152,7 @@ describe('Distortion', () => {
       const ctx = mockCtx()
       const dist = new Distortion(ctx, {}, () => {})
       expect(dist.effects[0]._type).to.eql('WaveShaper')
-      expect(dist.effects[0].oversample).to.eql('2x')
+      expect(dist.effects[0].oversample).to.eql('4x')
       expect(dist.effects[1]._type).to.eql('BiquadFilter')
       expect(dist.effects[1].type).to.eql('lowpass')
       expect(dist.effects[2]._type).to.eql('Gain')

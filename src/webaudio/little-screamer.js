@@ -7,7 +7,7 @@ const LittleScreamer = function(ctx, options) {
 
   const bass = ctx.createBiquadFilter()
   bass.type = 'lowshelf'
-  bass.frequency.value = 80
+  bass.frequency.value = 200
 
   const mid = ctx.createBiquadFilter()
   mid.type = 'peaking'
@@ -37,7 +37,7 @@ const LittleScreamer = function(ctx, options) {
     new base.Knob("volume", { min: 0, max: 10 }, options.volume, (v) => {
       volume.gain.value = v
     }),
-    new base.Knob("bass", { min: -40, max: 10 }, options.bass, (b) => {
+    new base.Knob("bass", { min: -30, max: 20 }, options.bass, (b) => {
       bass.gain.value = b
     }),
     new base.Knob("mid", { min: -40, max: 10 }, options.mid, (m) => {
