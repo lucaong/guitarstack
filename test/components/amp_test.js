@@ -1,9 +1,9 @@
-var React = require('react');
-var Amp = require('../../src/components/amp.js');
+var React = require('react')
+var Amp = require('../../src/components/amp.js')
 
 describe('Amp', () => {
   var initialValues = {}
-  var model;
+  var model
 
   beforeEach(function () {
     model = {
@@ -16,17 +16,17 @@ describe('Amp', () => {
   it('has the right class name', () => {
     var amp = shallow(<Amp
       model={model}
-      initialValues={initialValues} />);
-    expect(amp.hasClass('foo-bar')).to.be.true;
+      initialValues={initialValues} />)
+    expect(amp.hasClass('foo-bar')).to.be.true
   })
 
   it('renders all the knobs', () => {
     var amp = shallow(<Amp
       model={model}
-      initialValues={initialValues} />);
-    expect(amp.find('Knob')).to.have.length(2);
+      initialValues={initialValues} />)
+    expect(amp.find('Knob')).to.have.length(2)
     expect(amp.find('Knob').map(x => x.prop('knob')))
-      .to.eql(model.knobs);
+      .to.eql(model.knobs)
   })
 
   it('calls props.swapGadgets on drag/drop', () => {

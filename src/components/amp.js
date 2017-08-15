@@ -1,6 +1,6 @@
-var React = require('react');
-var Draggable = require("./draggable");
-var Knob = require('./knob');
+var React = require('react')
+var Draggable = require("./draggable")
+var Knob = require('./knob')
 
 module.exports = Amp = React.createClass({
   mixins: [Draggable],
@@ -9,8 +9,8 @@ module.exports = Amp = React.createClass({
   },
   render: function() {
     var knobs = this.props.model.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ knob.label } initialValue={ this.props.initialValues[knob.label] } />;
-        }.bind(this));
+          return <Knob knob={ knob } key={ knob.label } initialValue={ this.props.initialValues[knob.label] } />
+        }.bind(this))
 
     return (
       <div className={ "amp " + this.htmlClass() } draggable="true"
@@ -27,6 +27,6 @@ module.exports = Amp = React.createClass({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})

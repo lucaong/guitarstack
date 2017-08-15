@@ -2,7 +2,7 @@ var WaveSqueezer    = require("./webaudio/wave-squeezer"),
     BluesPunch      = require("./webaudio/blues-punch"),
     GlowingSunshine = require("./webaudio/glowing-sunshine"),
     BouncingBastard = require("./webaudio/bouncing-bastard"),
-    LittleScreamer  = require("./webaudio/little-screamer");
+    LittleScreamer  = require("./webaudio/little-screamer")
 
 module.exports = {
   "Wave Squeezer":    WaveSqueezer,
@@ -10,4 +10,4 @@ module.exports = {
   "Glowing Sunshine": GlowingSunshine,
   "Bouncing Bastard": BouncingBastard,
   "Little Screamer":  LittleScreamer
-};
+}

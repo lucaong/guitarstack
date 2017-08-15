@@ -1,5 +1,5 @@
-var React = require('react');
-var Board = require('../../src/components/board.js');
+var React = require('react')
+var Board = require('../../src/components/board.js')
 
 describe('Board', () => {
   var mockNode = function(fields) {
@@ -34,7 +34,7 @@ describe('Board', () => {
       gadgets={gadgets}
       input={input}
       output={output}
-      repo={mockRepo()} />);
+      repo={mockRepo()} />)
   })
 
   it('renders all gadgets in order', () => {
