@@ -1,12 +1,12 @@
-var base = require("./base-nodes")
+const base = require("./base-nodes")
 
-var BouncingBastard = function(ctx, options) {
+const BouncingBastard = function(ctx, options) {
   options = Object.assign({}, BouncingBastard.defaults, options)
 
-  var level    = ctx.createGain()
-  var delay    = ctx.createDelay()
-  var feedback = ctx.createGain()
-  var node     = new base.Node(ctx, [level, delay, feedback], options.on)
+  const level    = ctx.createGain()
+  const delay    = ctx.createDelay()
+  const feedback = ctx.createGain()
+  const node     = new base.Node(ctx, [level, delay, feedback], options.on)
 
   node.name = "Bouncing Bastard"
   node.type = "Delay"
@@ -16,13 +16,13 @@ var BouncingBastard = function(ctx, options) {
   feedback.connect(delay)
 
   node.knobs = [
-    new base.Knob("time", { min: 0, max: 1 }, options.time, function(x) {
+    new base.Knob("time", {min: 0, max: 1}, options.time, (x) => {
       delay.delayTime.value = x
     }),
-    new base.Knob("feedback", { min: 0, max: 1 }, options.feedback, function(x) {
+    new base.Knob("feedback", {min: 0, max: 1}, options.feedback, (x) => {
       feedback.gain.value = x
     }),
-    new base.Knob("level", { min: 0, max: 1 }, options.level, function(x) {
+    new base.Knob("level", {min: 0, max: 1}, options.level, (x) => {
       level.gain.value = x
     })
   ]
@@ -30,6 +30,6 @@ var BouncingBastard = function(ctx, options) {
   return node
 }
 
-BouncingBastard.defaults = { time: 0.5, feedback: 5, level: 10 }
+BouncingBastard.defaults = {time: 0.5, feedback: 5, level: 10}
 
 module.exports = BouncingBastard

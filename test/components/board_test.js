@@ -1,21 +1,20 @@
-var React = require('react')
-var Board = require('../../src/components/board.js')
+const React = require('react')
+const Board = require('../../src/components/board.js')
 
 describe('Board', () => {
-  var mockNode = function(fields) {
+  const mockNode = function(fields) {
     return Object.assign({
       connect: sinon.spy(x => x),
       disconnect: sinon.spy(function() { return this }),
     }, fields)
   }
-  var mockRepo = function() {
+  const mockRepo = function() {
     return {
       store: sinon.spy(),
       load: sinon.spy()
     }
   }
-
-  var gadgets = [
+  const gadgets = [
     mockNode({ id: 'foo', name: 'Foo', knobs: [], on: true }),
     mockNode({ id: 'bar', name: 'Bar', knobs: [], on: false }),
     mockNode({
@@ -25,9 +24,9 @@ describe('Board', () => {
       on: true
     })
   ]
-  var input = mockNode()
-  var output = mockNode()
-  var board
+  const input = mockNode()
+  const output = mockNode()
+  let board
 
   beforeEach(() => {
     board = shallow(<Board
@@ -38,14 +37,14 @@ describe('Board', () => {
   })
 
   it('renders all gadgets in order', () => {
-    var boxes = board.find('StompBox')
+    const boxes = board.find('StompBox')
     expect(boxes).to.have.length(3)
     expect(boxes.map(b => b.prop('id'))).to.eql(['foo', 'bar', 'baz'])
   })
 
   it('passes callbacks to gadgets', () => {
     board.find('StompBox').forEach(box => {
-      var instance = board.instance()
+      const instance = board.instance()
       expect(box.prop('swapGadgets')).to.eql(instance.swapGadgets)
       expect(box.prop('rewireEffects')).to.eql(instance.rewireEffects)
     })

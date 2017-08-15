@@ -1,9 +1,9 @@
-require('babel-register')({ presets: ['react'] })
+require('babel-register')({ presets: ['react', 'es2015'] })
 
-var chai = require('chai')
-var enzyme = require('enzyme')
-var sinon = require('sinon')
-var sinonChai = require('sinon-chai')
+const chai = require('chai')
+const enzyme = require('enzyme')
+const sinon = require('sinon')
+const sinonChai = require('sinon-chai')
 
 chai.use(sinonChai)
 

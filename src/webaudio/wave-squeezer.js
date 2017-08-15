@@ -1,11 +1,11 @@
-var base = require("./base-nodes")
+const base = require("./base-nodes")
 
-var WaveSqueezer = function(ctx, options) {
+const WaveSqueezer = function(ctx, options) {
   options = Object.assign({}, WaveSqueezer.defaults, options)
 
-  var level = ctx.createGain()
-  var comp = ctx.createDynamicsCompressor()
-  var node = new base.Node(ctx, [comp, level], options.on)
+  const level = ctx.createGain()
+  const comp = ctx.createDynamicsCompressor()
+  const node = new base.Node(ctx, [comp, level], options.on)
 
   node.name = "Wave Squeezer"
   node.type = "Compressor"
@@ -16,13 +16,13 @@ var WaveSqueezer = function(ctx, options) {
   comp.release.value = 0.5
 
   node.knobs = [
-    new base.Knob("threshold", { min: -100, max: 0 }, options.threshold, function(x) {
+    new base.Knob("threshold", { min: -100, max: 0 }, options.threshold, (x) => {
       comp.threshold.value = x
     }),
-    new base.Knob("attack", { min: 0.001, max: 0.2 }, options.attack, function(x) {
+    new base.Knob("attack", { min: 0.001, max: 0.2 }, options.attack, (x) => {
       comp.attack.value = x
     }),
-    new base.Knob("level", { min: 0, max: 10 }, options.level, function(x) {
+    new base.Knob("level", { min: 0, max: 10 }, options.level, (x) => {
       level.gain.value = x
     })
   ]

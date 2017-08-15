@@ -1,9 +1,9 @@
-var base = require("./base-nodes")
+const base = require("./base-nodes")
 
-var BluesPunch = function(ctx, options) {
+const BluesPunch = function(ctx, options) {
   options = Object.assign({}, BluesPunch.defaults, options)
 
-  var node = new base.Distortion(ctx, options, function(x, level) {
+  const node = new base.Distortion(ctx, options, (x, level) => {
     return Math.tanh(0.5 * level * x * Math.PI)
   })
 

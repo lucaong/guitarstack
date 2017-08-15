@@ -1,9 +1,9 @@
-var base = require("./base-nodes")
+const base = require("./base-nodes")
 
-var GlowingSunshine = function(ctx, options) {
+const GlowingSunshine = function(ctx, options) {
   options = Object.assign({}, GlowingSunshine.defaults, options)
 
-  var node = new base.Distortion(ctx, options, function(x, level) {
+  const node = new base.Distortion(ctx, options, (x, level) => {
     return Math.tanh(level * x * Math.PI) * Math.cos(0.5 * x)
   })
 

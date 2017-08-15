@@ -1,31 +1,31 @@
-var React = require("react")
-var Draggable = require("./draggable")
-var Knob = require("./knob")
+const React = require("react")
+const Draggable = require("./draggable")
+const Knob = require("./knob")
 
-module.exports = StompBox = React.createClass({
+const StompBox = React.createClass({
   mixins: [Draggable],
   getInitialState: function() {
     return { active: this.props.initialValues["on"] || false }
   },
   htmlClass: function() {
-    var nameClass = this.props.effect.name
+    const nameClass = this.props.effect.name
       .replace(/\W+/, "-").toLowerCase()
-    var activeClass = this.state.active ? "on" : "off"
+    const activeClass = this.state.active ? "on" : "off"
     return ["stomp-box", activeClass, nameClass].join(" ")
   },
   toggleSwitch: function() {
-    this.setState({ active: !this.state.active }, function() {
+    this.setState({ active: !this.state.active }, () => {
       this.props.effect.toggleSwitch(this.state.active)
-    }.bind(this))
+    })
   },
   render: function() {
-    var effect = this.props.effect
-    var knobs = this.props.effect.knobs.map(function(knob) {
-          return <Knob
-            knob={ knob }
-            key={ knob.label }
-            initialValue={ this.props.initialValues[knob.label] } />
-        }.bind(this))
+    const effect = this.props.effect
+    const knobs = this.props.effect.knobs.map(knob =>
+      <Knob
+        knob={ knob }
+        key={ knob.label }
+        initialValue={ this.props.initialValues[knob.label] } />
+    )
 
     return (
       <div draggable="true" className={ this.htmlClass() }
@@ -43,3 +43,5 @@ module.exports = StompBox = React.createClass({
     )
   }
 })
+
+module.exports = StompBox

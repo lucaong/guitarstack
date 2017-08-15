@@ -1,20 +1,25 @@
-var React = require('react')
-var Draggable = require("./draggable")
-var Knob = require('./knob')
+const React = require('react')
+const Draggable = require("./draggable")
+const Knob = require('./knob')
 
-module.exports = Amp = React.createClass({
+const Amp = React.createClass({
   mixins: [Draggable],
   htmlClass: function() {
     return this.props.model.name.replace(/\W+/, '-').toLowerCase()
   },
   render: function() {
-    var knobs = this.props.model.knobs.map(function(knob) {
-          return <Knob knob={ knob } key={ knob.label } initialValue={ this.props.initialValues[knob.label] } />
-        }.bind(this))
+    const knobs = this.props.model.knobs.map(knob =>
+      <Knob knob={ knob }
+            key={ knob.label }
+            initialValue={ this.props.initialValues[knob.label] } />
+    )
 
     return (
-      <div className={ "amp " + this.htmlClass() } draggable="true"
-           onDragStart={ this.dragStart } onDragOver={ this.dragOver } onDrop={ this.drop }>
+      <div className={ "amp " + this.htmlClass() }
+           draggable="true"
+           onDragStart={ this.dragStart }
+           onDragOver={ this.dragOver }
+           onDrop={ this.drop }>
         <div className="amp-plate">
           <div className="knobs">
             { knobs }
@@ -30,3 +35,5 @@ module.exports = Amp = React.createClass({
     )
   }
 })
+
+module.exports = Amp

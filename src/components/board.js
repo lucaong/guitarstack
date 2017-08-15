@@ -1,8 +1,8 @@
-var React = require('react')
-var StompBox = require('./stomp-box')
-var Amp = require('./amp')
+const React = require('react')
+const StompBox = require('./stomp-box')
+const Amp = require('./amp')
 
-module.exports = Board = React.createClass({
+const Board = React.createClass({
   getInitialState: function() {
     return { gadgets: this.props.gadgets }
   },
@@ -10,14 +10,10 @@ module.exports = Board = React.createClass({
     this.rewireEffects()
   },
   swapGadgets: function(idA, idB) {
-    var gadgets = this.state.gadgets.slice(0)
-    var idxB = gadgets.findIndex(function(gadget) {
-      return gadget.id == idB
-    })
-    var b = gadgets.splice(idxB, 1)
-    var idxA = gadgets.findIndex(function(gadget) {
-      return gadget.id == idA
-    })
+    const gadgets = this.state.gadgets.slice(0)
+    const idxB = gadgets.findIndex(gadget => gadget.id == idB)
+    const b = gadgets.splice(idxB, 1)
+    const idxA = gadgets.findIndex(gadget => gadget.id == idA)
     if (idxB <= idxA) {
       gadgets.splice(idxA + 1, 0, b[0])
     } else {
@@ -26,14 +22,14 @@ module.exports = Board = React.createClass({
     this.setState({ gadgets: gadgets })
   },
   rewireEffects: function() {
-    var stack = [this.props.input].concat(this.state.gadgets,
+    const stack = [this.props.input].concat(this.state.gadgets,
       this.props.output)
-    stack.reduce(function(previous, next) {
+    stack.reduce((previous, next) => {
       return previous.disconnect().connect(next)
     })
   },
   serialize: function() {
-    return this.state.gadgets.map(function(gadget) {
+    return this.state.gadgets.map(gadget => {
       return {
         id: gadget.id,
         name: gadget.name,
@@ -45,7 +41,7 @@ module.exports = Board = React.createClass({
     })
   },
   save: function() {
-    this.props.repo.store("preset-0:bank-0", this.serialize(), function(x) {
+    this.props.repo.store("preset-0:bank-0", this.serialize(), x => {
       console.log("saved", JSON.stringify(x))
     })
   },
@@ -87,3 +83,5 @@ module.exports = Board = React.createClass({
     )
   }
 })
+
+module.exports = Board

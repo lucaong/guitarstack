@@ -1,31 +1,31 @@
-var base = require("./base-nodes")
+const base = require("./base-nodes")
 
-var LittleScreamer = function(ctx, options) {
+const LittleScreamer = function(ctx, options) {
   options = Object.assign({}, LittleScreamer.defaults, options)
 
-  var volume = ctx.createGain()
+  const volume = ctx.createGain()
 
-  var bass = ctx.createBiquadFilter()
+  const bass = ctx.createBiquadFilter()
   bass.type = 'lowshelf'
   bass.frequency.value = 80
 
-  var mid = ctx.createBiquadFilter()
+  const mid = ctx.createBiquadFilter()
   mid.type = 'peaking'
   mid.frequency.value = 1500
 
-  var treble = ctx.createBiquadFilter()
+  const treble = ctx.createBiquadFilter()
   treble.type = 'highshelf'
   treble.frequency.value = 3000
 
-  var conv = new base.Convolver(ctx, '/impulses/little_screamer.wav')
+  const conv = new base.Convolver(ctx, '/impulses/little_screamer.wav')
 
-  var reverbGain    = ctx.createGain()
-  var reverbConv    = new base.Convolver(ctx, '/impulses/plate_reverb.wav')
-  var reverbLevel   = ctx.createGain()
-  var reverbOutGain = ctx.createGain()
+  const reverbGain    = ctx.createGain()
+  const reverbConv    = new base.Convolver(ctx, '/impulses/plate_reverb.wav')
+  const reverbLevel   = ctx.createGain()
+  const reverbOutGain = ctx.createGain()
   reverbGain.connect(reverbOutGain)
 
-  var node = new base.Node(ctx,
+  const node = new base.Node(ctx,
     [conv, bass, mid, treble, volume, reverbGain, reverbConv, reverbLevel, reverbOutGain],
     true)
 
@@ -34,19 +34,19 @@ var LittleScreamer = function(ctx, options) {
   node.initialValues = options
 
   node.knobs = [
-    new base.Knob("volume", { min: 0, max: 10 }, options.volume, function(v) {
+    new base.Knob("volume", { min: 0, max: 10 }, options.volume, (v) => {
       volume.gain.value = v
     }),
-    new base.Knob("bass", { min: -40, max: 10 }, options.bass, function(b) {
+    new base.Knob("bass", { min: -40, max: 10 }, options.bass, (b) => {
       bass.gain.value = b
     }),
-    new base.Knob("mid", { min: -40, max: 10 }, options.mid, function(m) {
+    new base.Knob("mid", { min: -40, max: 10 }, options.mid, (m) => {
       mid.gain.value = m
     }),
-    new base.Knob("treble", { min: -40, max: 10 }, options.treble, function(t) {
+    new base.Knob("treble", { min: -40, max: 10 }, options.treble, (t) => {
       treble.gain.value = t
     }),
-    new base.Knob("reverb", { min: 0, max: 1 }, options.reverb, function(r) {
+    new base.Knob("reverb", { min: 0, max: 1 }, options.reverb, (r) => {
       reverbLevel.gain.value = r
     })
   ]

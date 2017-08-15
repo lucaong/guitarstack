@@ -1,14 +1,14 @@
-var React = require('react')
-var Knob = require('../../src/components/knob.js')
+const React = require('react')
+const Knob = require('../../src/components/knob.js')
 
 describe('Knob', () => {
   it('sets the angle', () => {
-    var knob = { label: 'foo', set: sinon.spy() }
-    var component = shallow(<Knob initialValue={5} knob={knob} />)
+    const knob = { label: 'foo', set: sinon.spy() }
+    const component = shallow(<Knob initialValue={5} knob={knob} />)
     expect(component.find('.knob-dial').prop('style'))
       .to.have.property('transform', 'rotate(0deg)')
 
-    var scrollEvent = { deltaY: 10, preventDefault: sinon.spy() }
+    const scrollEvent = { deltaY: 10, preventDefault: sinon.spy() }
     component.find('.knob-dial').simulate('wheel', scrollEvent)
     expect(component.find('.knob-dial').prop('style'))
       .to.have.property('transform', 'rotate(10deg)')

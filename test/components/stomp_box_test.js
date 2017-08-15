@@ -1,9 +1,9 @@
-var React = require('react')
-var StompBox = require('../../src/components/stomp-box.js')
+const React = require('react')
+const StompBox = require('../../src/components/stomp-box.js')
 
 describe('StompBox', () => {
-  var initialValues = { on: false }
-  var effect
+  const initialValues = { on: false }
+  let effect
 
   beforeEach(function () {
     effect = {
@@ -15,14 +15,14 @@ describe('StompBox', () => {
   })
 
   it('has the right class name', () => {
-    var stompBox = shallow(<StompBox
+    const stompBox = shallow(<StompBox
       effect={effect}
       initialValues={initialValues} />)
     expect(stompBox.hasClass('foo-bar')).to.be.true
   })
 
   it('turns the effect on/off on click', () => {
-    var stompBox = shallow(<StompBox
+    const stompBox = shallow(<StompBox
       effect={effect}
       initialValues={initialValues} />)
 
@@ -42,7 +42,7 @@ describe('StompBox', () => {
   })
 
   it('renders all the knobs', () => {
-    var stompBox = shallow(<StompBox
+    const stompBox = shallow(<StompBox
       effect={effect}
       initialValues={initialValues} />)
     expect(stompBox.find('Knob')).to.have.length(2)
@@ -51,8 +51,8 @@ describe('StompBox', () => {
   })
 
   it('calls props.swapGadgets on drag/drop', () => {
-    var swapGadgets = sinon.spy()
-    var event = {
+    const swapGadgets = sinon.spy()
+    const event = {
       dataTransfer: {
         setData: function(x) {
           this.types.push(x)
@@ -62,13 +62,13 @@ describe('StompBox', () => {
       preventDefault: sinon.spy()
     }
 
-    var boxOne = shallow(<StompBox
+    const boxOne = shallow(<StompBox
       effect={effect}
       initialValues={initialValues}
       swapGadgets={swapGadgets}
       id="one" />)
 
-    var boxTwo = shallow(<StompBox
+    const boxTwo = shallow(<StompBox
       effect={effect}
       initialValues={initialValues}
       swapGadgets={swapGadgets}
@@ -81,8 +81,8 @@ describe('StompBox', () => {
   })
 
   it('calls props.rewireEffects on drop', () => {
-    var rewireEffects = sinon.spy()
-    var box = shallow(<StompBox
+    const rewireEffects = sinon.spy()
+    const box = shallow(<StompBox
       effect={effect}
       initialValues={initialValues}
       rewireEffects={rewireEffects}

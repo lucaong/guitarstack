@@ -1,9 +1,9 @@
-var React = require('react')
-var Amp = require('../../src/components/amp.js')
+const React = require('react')
+const Amp = require('../../src/components/amp.js')
 
 describe('Amp', () => {
-  var initialValues = {}
-  var model
+  const initialValues = {}
+  let model
 
   beforeEach(function () {
     model = {
@@ -14,14 +14,14 @@ describe('Amp', () => {
   })
 
   it('has the right class name', () => {
-    var amp = shallow(<Amp
+    const amp = shallow(<Amp
       model={model}
       initialValues={initialValues} />)
     expect(amp.hasClass('foo-bar')).to.be.true
   })
 
   it('renders all the knobs', () => {
-    var amp = shallow(<Amp
+    const amp = shallow(<Amp
       model={model}
       initialValues={initialValues} />)
     expect(amp.find('Knob')).to.have.length(2)
@@ -30,8 +30,8 @@ describe('Amp', () => {
   })
 
   it('calls props.swapGadgets on drag/drop', () => {
-    var swapGadgets = sinon.spy()
-    var event = {
+    const swapGadgets = sinon.spy()
+    const event = {
       dataTransfer: {
         setData: function(x) {
           this.types.push(x)
@@ -41,13 +41,13 @@ describe('Amp', () => {
       preventDefault: sinon.spy()
     }
 
-    var ampOne = shallow(<Amp
+    const ampOne = shallow(<Amp
       model={model}
       initialValues={initialValues}
       swapGadgets={swapGadgets}
       id="one" />)
 
-    var ampTwo = shallow(<Amp
+    const ampTwo = shallow(<Amp
       model={model}
       initialValues={initialValues}
       swapGadgets={swapGadgets}
@@ -60,8 +60,8 @@ describe('Amp', () => {
   })
 
   it('calls props.rewireEffects on drop', () => {
-    var rewireEffects = sinon.spy()
-    var amp = shallow(<Amp
+    const rewireEffects = sinon.spy()
+    const amp = shallow(<Amp
       model={model}
       initialValues={initialValues}
       rewireEffects={rewireEffects}

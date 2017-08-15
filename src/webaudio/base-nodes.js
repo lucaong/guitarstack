@@ -1,5 +1,5 @@
-var BaseNode = function(ctx, input, output) {
-  var node = {
+const BaseNode = function(ctx, input, output) {
+  const node = {
     input:  input,
     output: output,
     ctx: ctx,
@@ -15,10 +15,10 @@ var BaseNode = function(ctx, input, output) {
   return node
 }
 
-var Node = function(ctx, effects, on) {
-  var node = new BaseNode(ctx, ctx.createGain(), ctx.createGain())
+const Node = function(ctx, effects, on) {
+  const node = new BaseNode(ctx, ctx.createGain(), ctx.createGain())
 
-  for(var i = 0; i < effects.length - 1; i++) {
+  for(let i = 0; i < effects.length - 1; i++) {
     effects[i].connect(effects[i + 1])
   }
   effects[effects.length - 1].connect(node.output)
@@ -37,28 +37,28 @@ var Node = function(ctx, effects, on) {
   return node
 }
 
-var Output = function(ctx, options) {
-  var node = new BaseNode(ctx, ctx.destination)
+const Output = function(ctx, options) {
+  const node = new BaseNode(ctx, ctx.destination)
   return node
 }
 
-var Input = function(ctx, stream) {
-  var node = new BaseNode(ctx, null, ctx.createMediaStreamSource(stream))
+const Input = function(ctx, stream) {
+  const node = new BaseNode(ctx, null, ctx.createMediaStreamSource(stream))
   return node
 }
 
-var Knob = function(label, options, initial, fn) {
-  var defaults = { min: 0, max: 10 }
+const Knob = function(label, options, initial, fn) {
+  const defaults = { min: 0, max: 10 }
   options = Object.assign(defaults, options)
 
-  var map = function(x) {
+  const map = function(x) {
     return x * ((options.max - options.min) / 10) + options.min
   }
 
-  var knob = {
+  const knob = {
     set: function(value) {
       this.value = Math.min(Math.max(value, 0), 10)
-      var y = map(this.value)
+      const y = map(this.value)
       fn(y)
     },
     label: label
@@ -68,23 +68,23 @@ var Knob = function(label, options, initial, fn) {
   return knob
 }
 
-var Distortion = function(ctx, options, curveFn) {
-  var distortion = ctx.createWaveShaper()
+const Distortion = function(ctx, options, curveFn) {
+  const distortion = ctx.createWaveShaper()
   distortion.oversample = '2x'
 
-  var lowPass = ctx.createBiquadFilter()
+  const lowPass = ctx.createBiquadFilter()
   lowPass.type = 'lowpass'
 
-  var level = ctx.createGain()
+  const level = ctx.createGain()
 
-  var node = new Node(ctx, [distortion, lowPass, level], options.on)
+  const node = new Node(ctx, [distortion, lowPass, level], options.on)
 
-  var curve = function(level) {
-    var n_samples = 4096,
+  const curve = function(level) {
+    const n_samples = 4096,
     curve = new Float32Array(n_samples),
     deg = Math.PI / 180,
     x
-    for (var i = 0; i < n_samples; ++i) {
+    for (let i = 0; i < n_samples; ++i) {
       x = i * 2 / n_samples - 1
       curve[i] = curveFn(x, level)
     }
@@ -92,13 +92,13 @@ var Distortion = function(ctx, options, curveFn) {
   }
 
   node.knobs = [
-    new Knob("drive", { min: 1, max: 10 }, options.drive || 5, function(x) {
+    new Knob("drive", { min: 1, max: 10 }, options.drive || 5, x => {
       distortion.curve = curve(x)
     }),
-    new Knob("tone", { min: 100, max: 22050 }, options.tone || 5, function(x) {
+    new Knob("tone", { min: 100, max: 22050 }, options.tone || 5, x => {
       lowPass.frequency.value = x
     }),
-    new Knob("level", { min: 0, max: 2 }, options.level || 5, function(x) {
+    new Knob("level", { min: 0, max: 2 }, options.level || 5, x => {
       level.gain.value = x
     })
   ]
@@ -106,9 +106,9 @@ var Distortion = function(ctx, options, curveFn) {
   return node
 }
 
-var Convolver = function(ctx, impulseResponseURL) {
-  var conv = ctx.createConvolver()
-  var request = new XMLHttpRequest()
+const Convolver = function(ctx, impulseResponseURL) {
+  const conv = ctx.createConvolver()
+  const request = new XMLHttpRequest()
 
   request.open('GET', impulseResponseURL, true)
   request.responseType = 'arraybuffer'
