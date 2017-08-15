@@ -23,6 +23,8 @@ const Node = function(ctx, effects, on) {
   }
   effects[effects.length - 1].connect(node.output)
 
+  node.effects = effects
+
   node.toggleSwitch = function(on) {
     node.input.disconnect()
     if (on) {
@@ -80,12 +82,13 @@ const Distortion = function(ctx, options, curveFn) {
   const node = new Node(ctx, [distortion, lowPass, level], options.on)
 
   const curve = function(level) {
-    const n_samples = 4096,
-    curve = new Float32Array(n_samples),
-    deg = Math.PI / 180,
-    x
-    for (let i = 0; i < n_samples; ++i) {
-      x = i * 2 / n_samples - 1
+    const n = 4096
+    const curve = new Float32Array(n + 1)
+    const deg = Math.PI / 180
+    let x
+
+    for (let i = 0; i <= n; i++) {
+      x = i * 2 / n - 1
       curve[i] = curveFn(x, level)
     }
     return curve
