@@ -1,8 +1,9 @@
 const React = require("react")
+const createReactClass = require('create-react-class')
 const Draggable = require("./draggable")
 const Knob = require("./knob")
 
-const StompBox = React.createClass({
+const StompBox = createReactClass({
   mixins: [Draggable],
   getInitialState: function() {
     return { active: this.props.initialValues["on"] || false }

@@ -1,6 +1,7 @@
 const React = require('react')
+const createReactClass = require('create-react-class')
 
-const Knob = React.createClass({
+const Knob = createReactClass({
   getInitialState: function() {
     const angle = ((this.props.initialValue / 10) * (135 * 2)) - 135
     return { angle: angle || 0 }

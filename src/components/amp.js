@@ -1,8 +1,9 @@
 const React = require('react')
+const createReactClass = require('create-react-class')
 const Draggable = require("./draggable")
 const Knob = require('./knob')
 
-const Amp = React.createClass({
+const Amp = createReactClass({
   mixins: [Draggable],
   htmlClass: function() {
     return this.props.model.name.replace(/\W+/, '-').toLowerCase()

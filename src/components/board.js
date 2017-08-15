@@ -1,8 +1,9 @@
 const React = require('react')
+const createReactClass = require('create-react-class')
 const StompBox = require('./stomp-box')
 const Amp = require('./amp')
 
-const Board = React.createClass({
+const Board = createReactClass({
   getInitialState: function() {
     return { gadgets: this.props.gadgets }
   },
