@@ -2,7 +2,7 @@ const React = require('react')
 const Knob = require('../../src/components/knob.js')
 
 describe('Knob', () => {
-  it('sets the angle', () => {
+  it('sets the angle and the value on scroll wheel', () => {
     const knob = { label: 'foo', set: sinon.spy() }
     const component = shallow(<Knob initialValue={5} knob={knob} />)
     expect(component.find('.knob-dial').prop('style'))

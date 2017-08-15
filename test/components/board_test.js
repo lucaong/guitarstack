@@ -64,7 +64,7 @@ describe('Board', () => {
   })
 
   describe('rewireEffects', () => {
-    it('disconnects and reconnects effects', () => {
+    it('disconnects and re-connects effects', () => {
       board.instance().rewireEffects()
       gadgets.forEach(gadget => {
         expect(gadget.disconnect).to.have.been.calledOnce
