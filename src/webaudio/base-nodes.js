@@ -77,9 +77,13 @@ const Distortion = function(ctx, options, curveFn) {
   const lowPass = ctx.createBiquadFilter()
   lowPass.type = 'lowpass'
 
+  const highPass = ctx.createBiquadFilter()
+  highPass.type = 'highpass'
+  highPass.frequency.value = 280
+
   const level = ctx.createGain()
 
-  const node = new Node(ctx, [distortion, lowPass, level], options.on)
+  const node = new Node(ctx, [highPass, distortion, lowPass, level], options.on)
 
   const curve = function(level) {
     const n = 4096 * 2
