@@ -217,6 +217,12 @@ body {
 .stomp-box.wave-squeezer {
   background: darkgreen;
 }
+.stomp-box.phase-sweeper {
+  background: purple;
+}
+.stomp-box.tremble-on {
+  background: darkkhaki;
+}
 
 .amp {
   background: #ff7700;

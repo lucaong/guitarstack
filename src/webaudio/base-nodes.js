@@ -33,6 +33,9 @@ const Node = function(ctx, effects, on) {
       node.input.connect(node.output)
     }
     node.on = on
+    if (node.onToggleSwitch) {
+      node.onToggleSwitch(on)
+    }
   }
 
   node.toggleSwitch(on || false)

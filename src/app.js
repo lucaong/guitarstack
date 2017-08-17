@@ -32,6 +32,16 @@ const defaultGadgetList = [
     id: "5",
     name: "Little Screamer",
     settings: { volume: 8, bass: 7, mid: 4, treble: 5, reverb: 8 }
+  },
+  {
+    id: "6",
+    name: "Phase Sweeper",
+    settings: { speed: 3, depth: 7, feedback: 5 }
+  },
+  {
+    id: "7",
+    name: "Tremble On",
+    settings: { speed: 4, depth: 4, level: 5 }
   }
 ]
 
