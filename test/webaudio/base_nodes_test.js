@@ -151,11 +151,11 @@ describe('Distortion', () => {
     it('wraps a wave shaper with tone and level', () => {
       const ctx = mockCtx()
       const dist = new Distortion(ctx, {}, () => {})
-      expect(dist.effects[0]._type).to.eql('WaveShaper')
-      expect(dist.effects[0].oversample).to.eql('4x')
-      expect(dist.effects[1]._type).to.eql('BiquadFilter')
-      expect(dist.effects[1].type).to.eql('lowpass')
-      expect(dist.effects[2]._type).to.eql('Gain')
+      expect(dist.effects[1]._type).to.eql('WaveShaper')
+      expect(dist.effects[1].oversample).to.eql('4x')
+      expect(dist.effects[2]._type).to.eql('BiquadFilter')
+      expect(dist.effects[2].type).to.eql('lowpass')
+      expect(dist.effects[3]._type).to.eql('Gain')
     })
   })
 
@@ -178,7 +178,7 @@ describe('Distortion', () => {
     it('tone sets the cutoff frequency of the filter', () => {
       const ctx = mockCtx()
       const dist = new Distortion(ctx, {}, () => 0)
-      const filter = dist.effects.find(e => e._type == 'BiquadFilter')
+      const filter = dist.effects[2]
       const knob = dist.knobs.find(k => k.label == 'tone')
 
       knob.set(1)
