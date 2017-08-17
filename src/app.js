@@ -35,13 +35,13 @@ const defaultGadgetList = [
   },
   {
     id: "6",
-    name: "Phase Sweeper",
-    settings: { speed: 3, depth: 7, feedback: 5 }
+    name: "Tremble On",
+    settings: { speed: 4, depth: 4, level: 5 }
   },
   {
     id: "7",
-    name: "Tremble On",
-    settings: { speed: 4, depth: 4, level: 5 }
+    name: "Dream Box",
+    settings: { speed: 3, depth: 4, mix: 5 }
   }
 ]
 
