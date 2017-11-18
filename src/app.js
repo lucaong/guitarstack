@@ -62,7 +62,7 @@ navigator.mediaDevices.getUserMedia({
 })
   .catch(function(error) { alert(error) })
   .then(function(mediaStream) {
-    console.log('User media acquired')
+    window.confirm('Warning! Turn down your audio volume before you proceed to avoid feedback!')
     const ctx = new AudioContext()
     const input = new base.Input(ctx, mediaStream)
     const output = new base.Output(ctx)
