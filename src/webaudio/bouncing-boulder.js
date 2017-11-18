@@ -8,7 +8,7 @@ const BouncingBastard = function(ctx, options) {
   const feedback = ctx.createGain()
   const node     = new base.Node(ctx, [level, delay, feedback], options.on)
 
-  node.name = "Bouncing Bastard"
+  node.name = "Bouncing Boulder"
   node.type = "Delay"
   node.initialValues = options
 

@@ -50,7 +50,7 @@ const Board = createReactClass({
     return (
       <div className="board">
         <header className="header">
-          <h1>GuitarStack<b>.io</b></h1>
+          <h1>Guitar<b>Stack</b></h1>
           <div className="controls">
             <button className="save" onClick={ this.save }>Save</button>
           </div>

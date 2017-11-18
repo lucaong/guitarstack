@@ -5,7 +5,6 @@ const Board = require('./components/board')
 const Gadgets = require('./gadgets')
 const Repo = require("./repo")
 const base = require("./webaudio/base-nodes")
-const adapter = require("webrtc-adapter")
 
 const defaultGadgetList = [
   {
@@ -25,7 +24,7 @@ const defaultGadgetList = [
   },
   {
     id: "4",
-    name: "Bouncing Bastard",
+    name: "Bouncing Boulder",
     settings: { time: 2, feedback: 3, level: 5, on: false }
   },
   {
@@ -45,6 +44,12 @@ const defaultGadgetList = [
   }
 ]
 
+const AudioContext = window.AudioContext || window.webkitAudioContext || false
+
+if (!AudioContext) {
+  alert('AudioContext not supported!')
+}
+
 navigator.mediaDevices.getUserMedia({
   audio: {
     echoCancellation: false,
@@ -57,6 +62,7 @@ navigator.mediaDevices.getUserMedia({
 })
   .catch(function(error) { alert(error) })
   .then(function(mediaStream) {
+    console.log('User media acquired')
     const ctx = new AudioContext()
     const input = new base.Input(ctx, mediaStream)
     const output = new base.Output(ctx)
