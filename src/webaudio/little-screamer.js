@@ -17,10 +17,10 @@ const LittleScreamer = function(ctx, options) {
   treble.type = 'highshelf'
   treble.frequency.value = 3000
 
-  const conv = new base.Convolver(ctx, '/impulses/little_screamer.ogg')
+  const conv = new base.Convolver(ctx, './impulses/little_screamer.ogg')
 
   const reverbGain    = ctx.createGain()
-  const reverbConv    = new base.Convolver(ctx, '/impulses/reverb.ogg')
+  const reverbConv    = new base.Convolver(ctx, './impulses/reverb.ogg')
   const reverbLevel   = ctx.createGain()
   const reverbOutGain = ctx.createGain()
   reverbGain.connect(reverbOutGain)
